@@ -1,0 +1,31 @@
+{
+  "name": "2020victory",
+  "description" : "Quality of life improvements for 2020victory",
+  "version": "1.0.0.1",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://thrutalk.io/caller/login/*","https://www.thrutalk.io/caller/login/*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["login.js"]
+    },{
+      "matches": ["https://*.livevox.com/*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["livevox.com.js"]
+    },{
+      "matches": ["https://desktop.thrutalk.io/call*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["call.js"]
+    }
+  ],
+  "icons": {
+    "128": "images/icon128.png"
+  }
+}
