@@ -22,7 +22,7 @@ for (var i = 0; i < pEls.length; i++) {
 	}
 }
 if (cred.login != null && cred.password != null) {
-	// wait for the inner iframe to ask for the credentials in a REQUEST_LOGIN action
+	// wait for the inner iframe to ask for the credentials in a REQUEST_LOGIN message
 	chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		if (request.action == "REQUEST_LOGIN") {
 			sendResponse( cred );
