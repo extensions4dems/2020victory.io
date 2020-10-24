@@ -1,10 +1,13 @@
 'use strict';
 
+// if this is the form for logging in
 if (document.getElementById( "agentAuth" )) {
+	// ask the outer iframe for the login
 	chrome.runtime.sendMessage({action: "REQUEST_LOGIN"}, function(response) {
 		if (response == null) {
 			return;
 		}
+		// if we got the right response, fill in the form and click next
 		if (response.action == "LOGIN_CRED_FOUND") {
 			var usernameEl = document.getElementById( "username" );
 			usernameEl.value = response.login;
@@ -23,6 +26,7 @@ if (document.getElementById( "agentAuth" )) {
 		}
 	});
 } else {
+	// otherwise, listen for a term code being found and then look for those term codes to highlight
 	chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
 		var optionsDivEl = document.getElementById( "termCodesLine1Term_Codes" );
 		if (optionsDivEl && request.action == "SET_TERMCODE") {
@@ -37,7 +41,9 @@ if (document.getElementById( "agentAuth" )) {
 					var innerText = optionAEl.innerText;
 					if (innerText.includes( termcode )) {
 						termcodesFoundTotal++;
+						// highlight a correct option
 						optionAEl.style.backgroundColor = "lime";
+						// if the term codes section is collapsed, unfurl it
 						if (!optionsDivEl.classList.contains( "in" )) {
 							var collapsedAccordianEls = optionsDivEl.parentElement.getElementsByClassName( "accordion-toggle" );
 							for (var caIdx = 0; caIdx < collapsedAccordianEls.length; caIdx++) {
@@ -47,6 +53,7 @@ if (document.getElementById( "agentAuth" )) {
 					}
 				}
 			}
+			// we could click the correct option for the user if there's just one, but let's hold back on that, might be confusing.
 			if (termcodesFoundTotal == 1) {
 //				optionAEl.click();
 			}
