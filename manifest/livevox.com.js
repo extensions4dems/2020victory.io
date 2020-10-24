@@ -20,6 +20,7 @@ if (document.getElementById( "agentAuth" )) {
 				if (browserAudioCheckEl.checked == true) {
 				    browserAudioCheckEl.click();
 				}
+				// could click sign in for the user here, but chrome would throw a redirect warning
 				//var signInEl = document.getElementById( "signIn" );
 				//signInEl.click();
 			}, 200 );
