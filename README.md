@@ -8,7 +8,3 @@ https://www.youtube.com/watch?v=wUFQb4WXydw
 
 Get the latest google approved version on the chrome web store:
 https://chrome.google.com/webstore/detail/2020victory/machbekaehliflgmjcebceahlmgaclko
-
-The logging in functionality is currently broken with the chrome web store version, waiting on a fix to be approved by google.
-
-Otherwise you can install the latest in developer mode with an unpackaged directory.
